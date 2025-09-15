@@ -295,13 +295,16 @@ function initHeaderScroll() {
     let lastScrollTop = 0;
     
     window.addEventListener('scroll', () => {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-                if (scrollTop > lastScrollTop) {
-                    header.style.top = '-100px'; // Hide header on scroll down
-                } else {
-                    header.style.top = '0'; // Show header on scroll up
-                }
-                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative scroll values
-            });
+        if (scrollTop > lastScrollTop) {
+            header.style.top = '-100px'; // Hide header on scroll down
+        } else {
+            header.style.top = '0'; // Show header on scroll up
         }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative scroll values
+    });
+}
+
+// Убедитесь, что пути к ресурсам внутри JavaScript корректны, если они есть.
+// Убедитесь, что пути к ресурсам внутри JavaScript корректны.

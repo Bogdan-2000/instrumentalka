@@ -35,7 +35,6 @@ function rentTool() {
         <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
             <input type="text" placeholder="Ваше ім'я" required>
             <input type="tel" placeholder="Номер телефону" required>
-            <input type="date" required>
             <select>
                 <option value="1">1 день - 250 ₴</option>
                 <option value="3">3 дні - 600 ₴</option>
@@ -52,9 +51,63 @@ function rentTool() {
     document.body.appendChild(modal);
 }
 
+function isValidPhoneNumber(phone) {
+    const phoneRegex = /^\+?\d{10,15}$/; // Допускает номера с 10-15 цифрами, с "+" в начале (опционально)
+    return phoneRegex.test(phone);
+}
+
 function submitRental() {
-    alert("Дякуємо! Ваша заявка прийнята. Ми зв'яжемося з вами найближчим часом.");
-    document.querySelector('.modal-overlay').remove();
+    const modal = document.querySelector('.modal-overlay');
+    const name = modal.querySelector('input[placeholder="Ваше ім\'я"]').value;
+    const phone = modal.querySelector('input[placeholder="Номер телефону"]').value;
+
+    if (!name || !phone) {
+        alert("Будь ласка, заповніть усі поля.");
+        return;
+    }
+
+    if (!isValidPhoneNumber(phone)) {
+        alert("Будь ласка, введіть коректний номер телефону.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('tool', 'Відбійний молоток професійний');
+    formData.append('price', '250 ₴ за добу');
+    formData.append('name', name);
+    formData.append('phone', phone);
+
+    const telegramApiToken = '7965648457:AAGyy8boPO1T_4XmQBqVrgRkEOB3zVx5J3M';
+    const chatId = '900891446'; // Ваш chat_id
+    const telegramMessage = `
+        Нова заявка на оренду:
+        Інструмент: ${formData.get('tool')}
+        Ціна: ${formData.get('price')}
+        Ім'я: ${formData.get('name')}
+        Телефон: ${formData.get('phone')}
+    `;
+
+    fetch(`https://api.telegram.org/bot${telegramApiToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: telegramMessage
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            alert("Дякуємо! Ваша заявка на оренду прийнята. Ми зв'яжемося з вами найближчим часом.");
+        } else {
+            alert("Помилка при відправці заявки. Спробуйте ще раз.");
+        }
+    })
+    .catch(() => {
+        alert("Помилка при відправці заявки. Спробуйте ще раз.");
+    });
+
+    modal.remove();
 }
 
 // --- Зворотній дзвінок ---
@@ -91,6 +144,47 @@ function callBack() {
 }
 
 function submitCallback() {
-    alert("Дякуємо! Ми зв'яжемося з вами найближчим часом.");
-    document.querySelector('.modal-overlay').remove();
+    const modal = document.querySelector('.modal-overlay');
+    const name = modal.querySelector('input[placeholder="Ваше ім\'я"]').value;
+    const phone = modal.querySelector('input[placeholder="Номер телефону"]').value;
+
+    if (!name || !phone) {
+        alert("Будь ласка, заповніть усі поля.");
+        return;
+    }
+
+    if (!isValidPhoneNumber(phone)) {
+        alert("Будь ласка, введіть коректний номер телефону.");
+        return;
+    }
+
+    const telegramApiToken = '7965648457:AAGyy8boPO1T_4XmQBqVrgRkEOB3zVx5J3M';
+    const chatId = '900891446'; // Ваш chat_id
+    const telegramMessage = `
+        Нова заявка на зворотній дзвінок:
+        Ім'я: ${name}
+        Телефон: ${phone}
+    `;
+
+    fetch(`https://api.telegram.org/bot${telegramApiToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: chatId,
+            text: telegramMessage
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            alert("Дякуємо! Ми зв'яжемося з вами найближчим часом.");
+        } else {
+            alert("Помилка при відправці заявки. Спробуйте ще раз.");
+        }
+    })
+    .catch(() => {
+        alert("Помилка при відправці заявки. Спробуйте ще раз.");
+    });
+
+    modal.remove();
 }
