@@ -247,6 +247,7 @@ body {
     display: flex;
     gap: 1rem;
     margin-top: auto;
+    justify-content: center; /* Центрирование кнопок */
 }
 
 .btn {
