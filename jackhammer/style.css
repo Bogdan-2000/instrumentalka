@@ -1,0 +1,322 @@
+/* Загальні стилі */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-yellow: #FFD700;
+    --dark-bg: #1a1a1a;
+    --light-gray: #f5f5f5;
+    --accent-green: #4CAF50;
+    --warning-stripes: repeating-linear-gradient(
+        45deg,
+        #FFD700,
+        #FFD700 10px,
+        #1a1a1a 10px,
+        #1a1a1a 20px
+    );
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--light-gray);
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- картка товару --- */
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 3px solid var(--primary-yellow);
+    position: relative;
+}
+
+/* смуга зверху */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: var(--warning-stripes);
+    z-index: 1;
+}
+
+.product-header {
+    padding: 60px 2rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #2d2d2d 100%);
+    color: white;
+    position: relative;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--primary-yellow);
+}
+
+.product-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* --- контент --- */
+.product-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    padding: 3rem;
+}
+
+/* --- галерея --- */
+.main-image {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    border: 3px solid var(--primary-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-image img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 80px;
+    background: #f8f9fa;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+
+.thumbnail:hover,
+.thumbnail.active {
+    border-color: var(--primary-yellow);
+    transform: scale(1.05);
+}
+
+.thumbnail img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* --- блок з ціною --- */
+.price-section {
+    background: var(--dark-bg);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.price-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--warning-stripes);
+}
+
+.rental-price {
+    font-size: 2rem;
+    color: var(--primary-yellow);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.price-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* --- характеристики --- */
+.specifications {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.spec-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.spec-title::before {
+    content: "⚡";
+    margin-right: 10px;
+    color: var(--primary-yellow);
+}
+
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.spec-label { font-weight: bold; color: #666; }
+.spec-value { font-weight: 500; }
+
+/* --- переваги --- */
+.features-list {
+    background: white;
+    border: 2px solid var(--primary-yellow);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.features-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.features-title::before { content: "🔧"; margin-right: 10px; }
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+}
+
+.feature-item::before {
+    content: "✓";
+    color: var(--accent-green);
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+/* --- кнопки --- */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    flex: 1;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: var(--primary-yellow);
+    color: var(--dark-bg);
+}
+.btn-primary:hover {
+    background: #FFA500;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+.btn-secondary {
+    background: var(--primary-yellow);
+    color: var(--dark-bg);
+}
+.btn-secondary:hover {
+    background: #FFA500;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* бейдж */
+.badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--accent-green);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 2;
+}
+
+/* доступність */
+.availability {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-green);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.availability::before {
+    content: "●";
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* адаптив */
+@media (max-width: 768px) {
+    .product-content { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+    .price-list { grid-template-columns: 1fr; }
+    .action-buttons { flex-direction: column; }
+    .product-title { font-size: 2rem; }
+    .thumbnail-gallery { grid-template-columns: repeat(3, 1fr); }
+}
