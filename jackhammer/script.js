@@ -1,4 +1,3 @@
-// --- Галерея ---
 const thumbnails = document.querySelectorAll('.thumbnail');
 const mainImage = document.getElementById('mainImage').querySelector('img');
 
@@ -6,13 +5,11 @@ thumbnails.forEach((thumb) => {
     thumb.addEventListener('click', () => {
         thumbnails.forEach(t => t.classList.remove('active'));
         thumb.classList.add('active');
-        // Змінюємо src головного зображення
         const newSrc = thumb.querySelector('img').src;
         mainImage.src = newSrc;
     });
 });
 
-// --- Форма оренди ---
 function rentTool() {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
@@ -52,7 +49,7 @@ function rentTool() {
 }
 
 function isValidPhoneNumber(phone) {
-    const phoneRegex = /^\+?\d{10,15}$/; // Допускает номера с 10-15 цифрами, с "+" в начале (опционально)
+    const phoneRegex = /^\+?\d{10,15}$/;
     return phoneRegex.test(phone);
 }
 
@@ -110,7 +107,6 @@ function submitRental() {
     modal.remove();
 }
 
-// --- Зворотній дзвінок ---
 function callBack() {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
@@ -159,7 +155,7 @@ function submitCallback() {
     }
 
     const telegramApiToken = '7965648457:AAGyy8boPO1T_4XmQBqVrgRkEOB3zVx5J3M';
-    const chatId = '900891446'; // Ваш chat_id
+    const chatId = '900891446';
     const telegramMessage = `
         Нова заявка на зворотній дзвінок:
         Ім'я: ${name}

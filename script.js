@@ -1,9 +1,7 @@
-// DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
     initializeWebsite();
 });
 
-// Main initialization function
 function initializeWebsite() {
     initSmoothScrolling();
     initContactForm();
@@ -12,7 +10,6 @@ function initializeWebsite() {
     initHeaderScroll();
 }
 
-// Smooth scrolling for navigation links
 function initSmoothScrolling() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
     
@@ -34,7 +31,6 @@ function initSmoothScrolling() {
     });
 }
 
-// Contact form handling
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
@@ -43,17 +39,14 @@ function initContactForm() {
     }
 }
 
-// Form submission handler
 function handleFormSubmission(e) {
     e.preventDefault();
     
-    // Get form data
     const formData = new FormData(e.target);
     const name = formData.get('name');
     const phone = formData.get('phone');
     const message = formData.get('message');
     
-    // Basic validation
     if (!name || !phone) {
         showNotification('Будь ласка, заповніть обов\'язкові поля', 'error');
         return;
@@ -63,18 +56,16 @@ function handleFormSubmission(e) {
         showNotification('Будь ласка, введіть коректний номер телефону', 'error');
         return;
     }
-    
-    // Prepare data for Telegram
+
     const telegramApiToken = '7965648457:AAGyy8boPO1T_4XmQBqVrgRkEOB3zVx5J3M';
-    const chatId = '900891446'; // Обновлено на ваш chat_id
+    const chatId = '900891446';
     const telegramMessage = `
         Нова заявка з сайту:
         Ім'я: ${name}
         Телефон: ${phone}
         Повідомлення: ${message || 'Не вказано'}
     `;
-    
-    // Simulate form submission
+
     showLoadingState(true);
     
     fetch(`https://api.telegram.org/bot${telegramApiToken}/sendMessage`, {
@@ -101,24 +92,19 @@ function handleFormSubmission(e) {
     });
 }
 
-// Phone validation
 function validatePhone(phone) {
     const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
     return phoneRegex.test(phone);
 }
 
-// Show notification
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => notification.remove());
     
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
     
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 20px;
@@ -135,7 +121,6 @@ function showNotification(message, type = 'info') {
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     `;
     
-    // Set background color based on type
     const colors = {
         success: '#4CAF50',
         error: '#f44336',
@@ -143,16 +128,13 @@ function showNotification(message, type = 'info') {
     };
     notification.style.backgroundColor = colors[type] || colors.info;
     
-    // Add to page
     document.body.appendChild(notification);
     
-    // Show notification
     setTimeout(() => {
         notification.style.opacity = '1';
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Hide notification after 5 seconds
     setTimeout(() => {
         notification.style.opacity = '0';
         notification.style.transform = 'translateX(100px)';
@@ -164,7 +146,6 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Show loading state for form
 function showLoadingState(isLoading) {
     const submitBtn = document.querySelector('#contactForm button[type="submit"]');
     
@@ -181,7 +162,6 @@ function showLoadingState(isLoading) {
     }
 }
 
-// Scroll animations
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -197,11 +177,9 @@ function initScrollAnimations() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
     const animatedElements = document.querySelectorAll('.category-card, .feature-item');
     
     animatedElements.forEach((el, index) => {
-        // Set initial state
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
@@ -210,14 +188,11 @@ function initScrollAnimations() {
     });
 }
 
-// Mobile menu functionality
 function initMobileMenu() {
-    // Create mobile menu button if screen is small
     if (window.innerWidth <= 768) {
         createMobileMenuButton();
     }
     
-    // Handle window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth <= 768) {
             createMobileMenuButton();
@@ -227,16 +202,13 @@ function initMobileMenu() {
     });
 }
 
-// Create mobile menu button
 function createMobileMenuButton() {
     const header = document.querySelector('.header');
     const navContainer = document.querySelector('.nav-container');
     const navMenu = document.querySelector('.nav-menu');
     
-    // Check if button already exists
     if (document.querySelector('.mobile-menu-btn')) return;
     
-    // Create mobile menu button
     const mobileMenuBtn = document.createElement('button');
     mobileMenuBtn.className = 'mobile-menu-btn';
     mobileMenuBtn.innerHTML = '☰';
@@ -249,10 +221,8 @@ function createMobileMenuButton() {
         padding: 5px;
     `;
     
-    // Add button to nav container
     navContainer.appendChild(mobileMenuBtn);
     
-    // Toggle mobile menu
     mobileMenuBtn.addEventListener('click', () => {
         navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         navMenu.style.flexDirection = 'column';
@@ -266,7 +236,6 @@ function createMobileMenuButton() {
     });
 }
 
-// Remove mobile menu button
 function removeMobileMenuButton() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.querySelector('.nav-menu');
@@ -275,7 +244,6 @@ function removeMobileMenuButton() {
         mobileMenuBtn.remove();
     }
     
-    // Reset nav menu styles
     if (navMenu) {
         navMenu.style.display = '';
         navMenu.style.flexDirection = '';
@@ -289,7 +257,6 @@ function removeMobileMenuButton() {
     }
 }
 
-// Header scroll effect
 function initHeaderScroll() {
     const header = document.querySelector('.header');
     let lastScrollTop = 0;
@@ -298,13 +265,10 @@ function initHeaderScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         if (scrollTop > lastScrollTop) {
-            header.style.top = '-100px'; // Hide header on scroll down
+            header.style.top = '-100px';
         } else {
-            header.style.top = '0'; // Show header on scroll up
+            header.style.top = '0'; 
         }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative scroll values
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
     });
 }
-
-// Убедитесь, что пути к ресурсам внутри JavaScript корректны, если они есть.
-// Убедитесь, что пути к ресурсам внутри JavaScript корректны.
