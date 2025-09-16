@@ -5,6 +5,9 @@
     box-sizing: border-box;
 }
 
+a { text-decoration: none;
+}
+
 :root {
     --primary-yellow: #FFD700;
     --dark-bg: #1a1a1a;
@@ -30,7 +33,6 @@ body {
     margin: 0 auto;
 }
 
-/* --- картка товару --- */
 .product-card {
     background: white;
     border-radius: 15px;
@@ -40,7 +42,6 @@ body {
     position: relative;
 }
 
-/* смуга зверху */
 .product-card::before {
     content: '';
     position: absolute;
@@ -80,7 +81,6 @@ body {
     padding: 3rem;
 }
 
-/* --- галерея --- */
 .main-image {
     width: 100%;
     height: 400px;
