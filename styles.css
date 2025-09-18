@@ -269,6 +269,7 @@ body {
     background: var(--accent-blue);
 }
 
+
 .tool-info {
     padding: 1.5rem;
 }
@@ -277,6 +278,7 @@ body {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     color: var(--dark-bg);
+
 }
 
 .tool-info {
