@@ -150,7 +150,7 @@ body {
 }
 
 .btn-secondary {
-    background: transparent;
+    background: #FFA500;
     color: white;
     border: 2px solid var(--primary-yellow);
 }
@@ -158,6 +158,16 @@ body {
 .btn-secondary:hover {
     background: var(--primary-yellow);
     color: var(--dark-bg);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .hero-image {
@@ -182,6 +192,138 @@ body {
     content: "🔨";
     font-size: 8rem;
     opacity: 0.8;
+}
+
+/* Popular Tools Section */
+.popular-tools {
+    padding: 80px 0;
+    background: white;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 3px solid transparent;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border-color: var(--primary-yellow);
+}
+
+.tool-card.coming-soon {
+    opacity: 0.7;
+}
+
+.tool-card.coming-soon:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-color: transparent;
+}
+
+.tool-image {
+    position: relative;
+    height: 250px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tool-image img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.placeholder-image {
+    font-size: 4rem;
+    color: #ccc;
+}
+
+.tool-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.tool-badge.available {
+    background: var(--accent-blue);
+}
+
+.tool-info {
+    padding: 1.5rem;
+}
+
+.tool-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-bg);
+}
+
+.tool-info {
+    height: 348.6px;
+    width: 352.53px;
+}
+
+.tool-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.tool-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.price-main {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-yellow);
+}
+
+.price-period {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.tool-features {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.feature-tag {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid var(--primary-yellow);
+    color: var(--dark-bg);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
 .categories {
@@ -390,6 +532,14 @@ body {
     .cta-buttons {
         justify-content: center;
     }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-features {
+        justify-content: center;
+    }
 }
 
 @keyframes fadeInUp {
@@ -404,7 +554,8 @@ body {
 }
 
 .category-card,
-.feature-item {
+.feature-item,
+.tool-card {
     animation: fadeInUp 0.6s ease-out;
 }
 

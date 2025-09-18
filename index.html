@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
+
     <header class="header">
         <div class="nav-container">
             <div class="logo">ІНСТРУМЕНТАЛКА</div>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="../index.html">Головна</a></li>
+                    <li><a href="#home">Головна</a></li>
                     <li><a href="#catalog">Каталог</a></li>
                     <li><a href="#services">Послуги</a></li>
                     <li><a href="#about">Про нас</a></li>
@@ -23,14 +23,13 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
                 <h1><span class="highlight">АРЕНДА</span><br>ІНСТРУМЕНТА</h1>
                 <p>Професійні інструменти для будь-яких завдань. Вигідні ціни, висока якість, швидка доставка по всьому місту.</p>
                 <div class="cta-buttons">
-                    <a href="jackhammer/index.html" class="btn btn-primary">Переглянути каталог</a>
+                    <a href="#catalog" class="btn btn-primary">Переглянути каталог</a>
                     <a href="#contact" class="btn btn-secondary">Замовити дзвінок</a>
                 </div>
             </div>
@@ -40,7 +39,76 @@
         </div>
     </section>
 
-    <!-- Categories Section -->
+    <section class="popular-tools" id="popular">
+        <div class="section-container">
+            <h2 class="section-title">Популярні інструменти</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="Фото товару/image (6).png" alt="Відбійний молоток" />
+                        <div class="tool-badge">Хіт продажів</div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Відбійний молоток професійний</h3>
+                        <p class="tool-description">Потужний інструмент для демонтажних робіт. 1500 Вт, 55 Дж</p>
+                        <div class="tool-price">
+                            <span class="price-main">250 ₴</span>
+                            <span class="price-period">за добу</span>
+                        </div>
+                        <div class="tool-features">
+                            <span class="feature-tag">SDS-Max</span>
+                            <span class="feature-tag">1100 уд/хв</span>
+                            <span class="feature-tag">11 кг</span>
+                        </div>
+                        <a href="jackhammer/index.html" class="btn btn-primary">Детальніше</a>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-image">
+                        <img src="Фото товару/image2 (1).png" alt="Віброплита" />
+                        <div class="tool-badge available">В наявності</div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Віброплита професійна</h3>
+                        <p class="tool-description">Ідеальний вибір для ущільнення грунту та асфальту. 1500 Вт, 40 Дж</p>
+                        <div class="tool-price">
+                            <span class="price-main">300 ₴</span>
+                            <span class="price-period">за добу</span>
+                        </div>
+                        <div class="tool-features">
+                            <span class="feature-tag">70 кг</span>
+                            <span class="feature-tag">1500 Вт</span>
+                            <span class="feature-tag">40 Дж</span>
+                        </div>
+                        <a href="vibratory plates/index.html" class="btn btn-primary">Детальніше</a>
+                    </div>
+                </div>
+
+                <div class="tool-card coming-soon">
+                    <div class="tool-image">
+                        <div class="placeholder-image">🔧</div>
+                        <div class="tool-badge">Скоро</div>
+                    </div>
+                    <div class="tool-info">
+                        <h3>Перфоратор професійний</h3>
+                        <p class="tool-description">Потужний перфоратор для свердління бетону та цегли</p>
+                        <div class="tool-price">
+                            <span class="price-main">200 ₴</span>
+                            <span class="price-period">за добу</span>
+                        </div>
+                        <div class="tool-features">
+                            <span class="feature-tag">SDS-Plus</span>
+                            <span class="feature-tag">850 Вт</span>
+                            <span class="feature-tag">3.2 Дж</span>
+                        </div>
+                        <button class="btn btn-secondary" disabled>Скоро в наявності</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="categories" id="catalog">
         <div class="section-container">
             <h2 class="section-title">Категорії інструментів</h2>
@@ -49,43 +117,42 @@
                     <div class="category-icon">🔨</div>
                     <h3>Будівельні інструменти</h3>
                     <p>Перфоратори, дрилі, шуруповерти, відбійні молотки та інше професійне обладнання</p>
-                    <a href="#" class="btn btn-primary">Детальніше</a>
+                    <a href="jackhammer/index.html" class="btn btn-primary">Детальніше</a>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🏗️</div>
+                    <h3>Ущільнювальна техніка</h3>
+                    <p>Віброплити, віброноги, трамбівки для ущільнення грунту та асфальту</p>
+                    <a href="vibratory plates/index.html" class="btn btn-primary">Детальніше</a>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🌳</div>
                     <h3>Деревообробка</h3>
                     <p>Циркулярні пили, лобзики, рубанки, фрезери для роботи з деревом</p>
-                    <a href="#" class="btn btn-primary">Детальніше</a>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🔧</div>
-                    <h3>Слюсарний інструмент</h3>
-                    <p>Набори ключів, тріскачки, динамометричні ключі для автосервісу</p>
-                    <a href="#" class="btn btn-primary">Детальніше</a>
+                    <a href="#" class="btn btn-primary">Скоро</a>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">⚡</div>
                     <h3>Електроінструмент</h3>
                     <p>Болгарки, шліфмашини, паяльне обладнання, зварювальні апарати</p>
-                    <a href="#" class="btn btn-primary">Детальніше</a>
+                    <a href="#" class="btn btn-primary">Скоро</a>
                 </div>
                 <div class="category-card">
-                    <div class="category-icon">🏗️</div>
+                    <div class="category-icon">🚗</div>
                     <h3>Садова техніка</h3>
                     <p>Газонокосарки, тримери, культиватори, ланцюгові пили</p>
-                    <a href="#" class="btn btn-primary">Детальніше</a>
+                    <a href="#" class="btn btn-primary">Скоро</a>
                 </div>
                 <div class="category-card">
                     <div class="category-icon">🧰</div>
                     <h3>Вимірювальні прилади</h3>
                     <p>Лазерні рівні, далекоміри, детектори, штангенциркулі</p>
-                    <a href="#" class="btn btn-primary">Детальніше</a>
+                    <a href="#" class="btn btn-primary">Скоро</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="services">
         <div class="section-container">
             <div class="features-content">
@@ -116,7 +183,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="section-container">
             <h2 class="section-title">Контакти</h2>
@@ -175,7 +241,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Інструменталка. Всі права захищені.</p>
