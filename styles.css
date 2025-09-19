@@ -520,12 +520,6 @@ body {
         display: none;
     }
 
-    .tool-card {
-        display: flex; 
-        justify-content: center; 
-        align-items: center;   
-    }
-
     .nav-menu {
         display: none;
     }
