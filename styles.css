@@ -141,6 +141,7 @@ body {
 .btn-primary {
     background: var(--primary-yellow);
     color: var(--dark-bg);
+
 }
 
 .btn-primary:hover {
@@ -514,6 +515,17 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .hero-image {
+        display: none;
+    }
+
+    .tool-card {
+        display: flex; 
+        justify-content: center; 
+        align-items: center;   
+    }
+
     .nav-menu {
         display: none;
     }
